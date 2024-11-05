@@ -1,5 +1,6 @@
 @import "config";
 @import "utilities";
+@import "./components/input";
 @import "./components/overlay";
 @import "./components/user-icon";
 @import "./pages/main";
@@ -92,6 +93,7 @@ button {
   background-color: $instagram-color;
   color: $white-color;
   font-weight: bold;
+  cursor: pointer;
   &:disabled {
     opacity: 0.6;
   }

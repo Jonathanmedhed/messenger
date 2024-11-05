@@ -1,5 +1,6 @@
 import React from "react";
 import InputEmoji from "react-input-emoji";
+import { validateEmail } from "../utils/regex";
 
 const Input = ({
   className,
@@ -23,11 +24,14 @@ const Input = ({
       ) : (
         <input
           className={`${className || ""}`}
-          type={type}
-          placeholder={placeholder}
-          value={value}
           onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          type={type}
+          value={value}
         />
+      )}
+      {type === "email" && value && !validateEmail(value) && (
+        <div className="input__error">invalid email</div>
       )}
     </span>
   );

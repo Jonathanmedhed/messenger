@@ -238,11 +238,25 @@
   padding: 0.3rem 1.2rem;
   border-radius: 0.2rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   outline: none;
   transition: all 0.2s ease-in; //add slow effect when highlighting on hover
-
+  cursor: pointer;
+  &.--frame {
+    border: solid 2px $frame-color;
+    @include set-background($frame-color);
+    &:hover {
+      background: lighten($frame-color, 5%);
+    }
+  }
+  &.--blue {
+    border: solid 2px $blue-color;
+    @include set-background($blue-color);
+    &:hover {
+      background: lighten($blue-color, 5%);
+    }
+  }
   &.--primary {
     border: solid 2px $primary-color;
     @include set-background($primary-color);

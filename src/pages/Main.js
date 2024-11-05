@@ -1,89 +1,168 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Overlay from "../components/Overlay";
 import UserIcon from "../components/UserIcon";
+import Input from "../components/Input";
+import { validateEmail } from "../utils/regex";
+import menuIcon from "../images/menu.svg";
 import dogImg from "../images/dog.jpg";
 //import doveIcon from "../images/dove.svg";
 //import maxIcon from "../images/maximize.svg";
 import downIcon from "../images/down.svg";
 import editIcon from "../images/edit.svg";
 import upIcon from "../images/up.svg";
-import Input from "../components/Input";
 
 const contactList = [
-  { name: "User Blah", msg: "Hello There", status: "online" },
   {
+    email: "email@mail.com",
+    name: "User Blah",
+    msg: "Hello There",
+    status: "online",
+  },
+  {
+    email: "email@mail.com",
     name: "User 45g43g45g45g45g45g45g45",
     msg: "Hello There Hello There",
     status: "away",
   },
   {
+    email: "email@mail.com",
+    name: "User Blg4g45g54g45g45gah",
+    msg: "Hello There Hello There Hello There Hello There Hello There",
+    status: "blocked",
+  },
+  {
+    email: "email@mail.com",
+    name: "User B54g245glah",
+    msg: "Hello There",
+    status: "online",
+  },
+  {
+    email: "email@mail.com",
+    name: "User Blah",
+    msg: "Hello There Hello There Hello There Hello There Hello There Hello There",
+    status: "busy",
+  },
+  {
+    email: "email@mail.com",
+    name: "User Bl54g45gah",
+    msg: "Hello There Hello There Hello There Hello There",
+    status: "offline",
+  },
+  {
+    email: "email@mail.com",
+    name: "User Blah",
+    msg: "Hello There Hello There",
+    status: "inactive",
+  },
+  {
+    email: "email@mail.com",
+    name: "User B54g45gah",
+    msg: "Hello There",
+    status: "online",
+  },
+  {
+    email: "email@mail.com",
+    name: "User Blah",
+    msg: "Hello There",
+    status: "online",
+  },
+  {
+    email: "email@mail.com",
+    name: "User 45g43g45g45g45g45g45g45",
+    msg: "Hello There Hello There",
+    status: "away",
+  },
+  {
+    email: "email@mail.com",
     name: "User Blg4g45g54g45g45gah",
     msg: "Hello There Hello There Hello There Hello There Hello There",
     status: "blocked",
   },
   { name: "User B54g245glah", msg: "Hello There", status: "online" },
   {
+    email: "email@mail.com",
     name: "User Blah",
     msg: "Hello There Hello There Hello There Hello There Hello There Hello There",
     status: "busy",
   },
   {
+    email: "email@mail.com",
     name: "User Bl54g45gah",
     msg: "Hello There Hello There Hello There Hello There",
     status: "offline",
   },
-  { name: "User Blah", msg: "Hello There Hello There", status: "inactive" },
-  { name: "User B54g45gah", msg: "Hello There", status: "online" },
-  { name: "User Blah", msg: "Hello There", status: "online" },
   {
+    email: "email@mail.com",
+    name: "User Blah",
+    msg: "Hello There Hello There",
+    status: "inactive",
+  },
+  {
+    email: "email@mail.com",
+    name: "User B54g45gah",
+    msg: "Hello There",
+    status: "online",
+  },
+  {
+    email: "email@mail.com",
+    name: "User Blah",
+    msg: "Hello There Hello There",
+    status: "inactive",
+  },
+  {
+    email: "email@mail.com",
+    name: "User B54g45gah",
+    msg: "Hello There",
+    status: "online",
+  },
+  {
+    email: "email@mail.com",
+    name: "User Blah",
+    msg: "Hello There",
+    status: "online",
+  },
+  {
+    email: "email@mail.com",
     name: "User 45g43g45g45g45g45g45g45",
     msg: "Hello There Hello There",
     status: "away",
   },
   {
+    email: "email@mail.com",
     name: "User Blg4g45g54g45g45gah",
     msg: "Hello There Hello There Hello There Hello There Hello There",
     status: "blocked",
   },
-  { name: "User B54g245glah", msg: "Hello There", status: "online" },
   {
+    email: "email@mail.com",
+    name: "User B54g245glah",
+    msg: "Hello There",
+    status: "online",
+  },
+  {
+    email: "email@mail.com",
     name: "User Blah",
     msg: "Hello There Hello There Hello There Hello There Hello There Hello There",
     status: "busy",
   },
   {
+    email: "email@mail.com",
     name: "User Bl54g45gah",
     msg: "Hello There Hello There Hello There Hello There",
     status: "offline",
   },
-  { name: "User Blah", msg: "Hello There Hello There", status: "inactive" },
-  { name: "User B54g45gah", msg: "Hello There", status: "online" },
-  { name: "User Blah", msg: "Hello There Hello There", status: "inactive" },
-  { name: "User B54g45gah", msg: "Hello There", status: "online" },
-  { name: "User Blah", msg: "Hello There", status: "online" },
   {
-    name: "User 45g43g45g45g45g45g45g45",
+    email: "email@mail.com",
+    name: "User Blah",
     msg: "Hello There Hello There",
-    status: "away",
+    status: "inactive",
   },
   {
-    name: "User Blg4g45g54g45g45gah",
-    msg: "Hello There Hello There Hello There Hello There Hello There",
-    status: "blocked",
+    email: "email@mail.com",
+    name: "User B54g45gah",
+    msg: "Hello There",
+    status: "online",
   },
-  { name: "User B54g245glah", msg: "Hello There", status: "online" },
-  {
-    name: "User Blah",
-    msg: "Hello There Hello There Hello There Hello There Hello There Hello There",
-    status: "busy",
-  },
-  {
-    name: "User Bl54g45gah",
-    msg: "Hello There Hello There Hello There Hello There",
-    status: "offline",
-  },
-  { name: "User Blah", msg: "Hello There Hello There", status: "inactive" },
-  { name: "User B54g45gah", msg: "Hello There", status: "online" },
 ];
 
 const Main = () => {
@@ -92,10 +171,17 @@ const Main = () => {
   const [displayMsg, setDisplayMsg] = useState("");
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("Display Name");
+  const [showInvite, setShowInvite] = useState(false);
   const [showEditMsg, setShowEditMsg] = useState(false);
   const [showEditName, setShowEditName] = useState(false);
   const [showStatOptions, setShowStatOptions] = useState(false);
   const [status, setStatus] = useState("Offline");
+
+  // to show scrollable
+  const refContact = useRef(null);
+  const refContacts = useRef(null);
+
+  //setHeight(ref.current.clientHeight)
 
   const stats = ["offline", "online", "away", "busy"];
 
@@ -108,24 +194,41 @@ const Main = () => {
   };
 
   const sendInvite = () => {
-    setShowEditMsg(false);
+    let newContacts = contacts;
+    newContacts.unshift({
+      email: email,
+      name: "",
+      msg: "",
+      status: "invited",
+    });
+    setContacts(newContacts);
+    setShowInvite(false);
   };
 
   return (
     <div className="main">
       <Overlay
         hide={() => {
-          console.log("close");
+          setShowInvite(false);
         }}
-        show={true}
+        show={showInvite}
       >
-        <Input
-          className="main__input"
-          value={email}
-          onChange={setEmail}
-          placeholder={"Enter Email"}
-        />
-        <button>Add</button>
+        <div className="main__overlay">
+          <h3 className="main__overlay-title">Send Request</h3>
+          <Input
+            value={email}
+            onChange={setEmail}
+            placeholder={"Enter contact email"}
+            type={"email"}
+          />
+          <button
+            className="btn --frame --mt-1"
+            disabled={!validateEmail(email)}
+            onClick={() => sendInvite()}
+          >
+            Invite
+          </button>
+        </div>
       </Overlay>
       <div className="main__frame">
         {/** frame header */}
@@ -133,7 +236,9 @@ const Main = () => {
           <div className="main__frame-title">
             <UserIcon type="two" /> <h1>MSN Messenger</h1>
           </div>
-          <div className="main__frame-options">Options</div>
+          <div className="main__frame-options">
+            <img alt="menu" src={menuIcon} />
+          </div>
         </div>
         {/** content inside frame */}
         <div className="main__content">
@@ -218,14 +323,14 @@ const Main = () => {
               </div>
             </div>
           </div>
-          <div className="main__add">
+          <div className="main__add" onClick={() => setShowInvite(true)}>
             <UserIcon type="add" />
             <div className="main__add-msg">Add a Contact</div>
           </div>
 
-          <div className="main__contacts">
+          <div className="main__contacts" ref={refContacts}>
             {contacts.map((contact, i) => (
-              <div className="main__contact">
+              <div className="main__contact" key={i} ref={refContact}>
                 <div className="main__contact-stat">
                   <UserIcon type={contact.status} />
                   {contact.status !== "online" && (
@@ -233,7 +338,9 @@ const Main = () => {
                   )}
                 </div>
                 <div className="main__contact-info">
-                  <div className="main__contact-name">{contact.name}</div>
+                  <div className="main__contact-name">
+                    {contact.name || contact.email}
+                  </div>
                   <div className="main__contact-msg">
                     {contact.msg && <span className="--mr-half">-</span>}
                     {contact.msg}
@@ -241,9 +348,10 @@ const Main = () => {
                 </div>
               </div>
             ))}
+            <h1>{refContacts.current.clientHeight}</h1>
           </div>
           <div className="main__ads">
-            <h1>Ads Here</h1>
+            <span className="main__ad-text">ad</span>
           </div>
         </div>
       </div>

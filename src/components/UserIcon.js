@@ -25,6 +25,9 @@ const UserIcon = ({ type, className }) => {
     case "offline":
       icon = redIcon;
       break;
+    case "invited":
+      icon = redIcon;
+      break;
     case "two":
       icon = twoIcon;
       break;
