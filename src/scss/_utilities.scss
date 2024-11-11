@@ -243,6 +243,15 @@
   outline: none;
   transition: all 0.2s ease-in; //add slow effect when highlighting on hover
   cursor: pointer;
+  &.--circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    min-height: 2rem;
+    padding: unset;
+    border-radius: 50%;
+  }
   &.--frame {
     border: solid 2px $frame-color;
     @include set-background($frame-color);

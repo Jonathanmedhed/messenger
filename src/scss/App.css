@@ -1940,6 +1940,15 @@
   transition: all 0.2s ease-in;
   cursor: pointer;
 }
+.btn.--circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: unset;
+  border-radius: 50%;
+}
 .btn.--frame {
   border: solid 2px rgb(0, 95, 236);
   background-color: rgb(0, 95, 236);
@@ -2791,11 +2800,26 @@ Images
   width: 1rem;
 }
 .main__frame .main__frame-inner .main__frame-options {
+  position: relative;
   margin-right: 0.25rem;
   cursor: pointer;
 }
 .main__frame .main__frame-inner .main__frame-options img {
   height: 1.2rem;
+}
+.main__frame .main__frame-inner .main__frame-options .main__frame-menu {
+  position: absolute;
+  bottom: -2.2rem;
+  right: 0.3rem;
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(0, 95, 236);
+}
+.main__frame .main__frame-inner .main__frame-options .main__frame-menu .main__frame-menu-opt {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: rgb(0, 95, 236);
 }
 .main__frame .main__content {
   max-height: 94.3vh;
@@ -2927,7 +2951,8 @@ Images
   font-weight: 600;
 }
 .main__frame .main__content .main__contacts {
-  height: 60%;
+  position: relative;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   padding: 0.25rem 0.5rem;
@@ -2973,10 +2998,23 @@ Images
   white-space: nowrap;
   */
 }
+.main__frame .main__content .main__scroll {
+  position: relative;
+}
+.main__frame .main__content .main__scroll .btn {
+  position: absolute;
+  top: -5rem;
+  right: 3rem;
+  width: 4rem;
+  height: 4rem;
+}
+.main__frame .main__content .main__scroll .btn img {
+  width: 2.5rem;
+}
 .main__frame .main__content .main__ads {
   position: relative;
+  height: 20vh;
   display: flex;
-  flex: 1 1 auto;
   align-items: center;
   justify-content: center;
   margin: 0 0.5rem 0.5rem 0.5rem;

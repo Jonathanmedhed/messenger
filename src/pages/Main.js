@@ -1,12 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Overlay from "../components/Overlay";
 import UserIcon from "../components/UserIcon";
 import Input from "../components/Input";
 import { validateEmail } from "../utils/regex";
+import { scrollDown, scrollToRef, useOnScreen } from "../utils/scrolling";
+import arrowDownIcon from "../images/arrow-down-circle.svg";
+import arrowUpIcon from "../images/arrow-up-circle.svg";
 import menuIcon from "../images/menu.svg";
 import dogImg from "../images/dog.jpg";
-//import doveIcon from "../images/dove.svg";
-//import maxIcon from "../images/maximize.svg";
 import downIcon from "../images/down.svg";
 import editIcon from "../images/edit.svg";
 import upIcon from "../images/up.svg";
@@ -165,6 +166,30 @@ const contactList = [
   },
 ];
 
+/**
+ 
+ */
+
+const ContactTemplate = ({ contact, contactKey }) => {
+  return (
+    <div className="main__contact" key={contactKey}>
+      <div className="main__contact-stat">
+        <UserIcon type={contact.status} />
+        {contact.status !== "online" && <span>({contact.status})</span>}
+      </div>
+      <div className="main__contact-info">
+        <div className="main__contact-name">
+          {contact.name || contact.email}
+        </div>
+        <div className="main__contact-msg">
+          {contact.msg && <span className="--mr-half">-</span>}
+          {contact.msg}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Main = () => {
   //const [isHeadSm, setIsHeadSm] = useState(false);
   const [contacts, setContacts] = useState(contactList);
@@ -174,12 +199,17 @@ const Main = () => {
   const [showInvite, setShowInvite] = useState(false);
   const [showEditMsg, setShowEditMsg] = useState(false);
   const [showEditName, setShowEditName] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [showStatOptions, setShowStatOptions] = useState(false);
   const [status, setStatus] = useState("Offline");
+  const [isScrollable, setIsScrollable] = useState(false);
 
   // to show scrollable
-  const refContact = useRef(null);
+  const refContactFirst = useRef(null);
+  const refContactLast = useRef(null);
   const refContacts = useRef(null);
+
+  const isLastVisible = useOnScreen(refContactLast);
 
   //setHeight(ref.current.clientHeight)
 
@@ -204,6 +234,24 @@ const Main = () => {
     setContacts(newContacts);
     setShowInvite(false);
   };
+
+  useEffect(() => {
+    // Check if there is overflow
+    const contactsContHeight = parseInt(refContacts?.current?.clientHeight);
+
+    const contactsRefHeight = parseInt(
+      refContactFirst?.current?.clientHeight * contacts.length * contacts.length
+    );
+    if (contactsRefHeight > contactsContHeight) {
+      setIsScrollable(true);
+    }
+    console.log(
+      "contactsRefHeight: " +
+        contactsRefHeight +
+        " contactsContHeight: " +
+        contactsContHeight
+    );
+  }, [refContacts, refContactFirst, contacts]);
 
   return (
     <div className="main">
@@ -237,7 +285,16 @@ const Main = () => {
             <UserIcon type="two" /> <h1>MSN Messenger</h1>
           </div>
           <div className="main__frame-options">
-            <img alt="menu" src={menuIcon} />
+            <img
+              alt="menu"
+              onClick={() => setShowMenu(!showMenu)}
+              src={menuIcon}
+            />
+            {showMenu && (
+              <div className="main__frame-menu">
+                <div className="main__frame-menu-opt">Logout</div>
+              </div>
+            )}
           </div>
         </div>
         {/** content inside frame */}
@@ -329,27 +386,32 @@ const Main = () => {
           </div>
 
           <div className="main__contacts" ref={refContacts}>
-            {contacts.map((contact, i) => (
-              <div className="main__contact" key={i} ref={refContact}>
-                <div className="main__contact-stat">
-                  <UserIcon type={contact.status} />
-                  {contact.status !== "online" && (
-                    <span>({contact.status})</span>
-                  )}
-                </div>
-                <div className="main__contact-info">
-                  <div className="main__contact-name">
-                    {contact.name || contact.email}
-                  </div>
-                  <div className="main__contact-msg">
-                    {contact.msg && <span className="--mr-half">-</span>}
-                    {contact.msg}
-                  </div>
-                </div>
-              </div>
-            ))}
-            <h1>{refContacts.current.clientHeight}</h1>
+            {contacts.map((contact, i) => {
+              return i === 0 ? (
+                <span ref={refContactFirst} key={i}>
+                  <ContactTemplate contact={contact} />
+                </span>
+              ) : i === contacts.length - 1 ? (
+                <span ref={refContactLast} key={i}>
+                  <ContactTemplate contact={contact} />
+                </span>
+              ) : (
+                <span key={i}>
+                  <ContactTemplate contact={contact} contactKey={i} />
+                </span>
+              );
+            })}
           </div>
+          <span className="main__scroll">
+            {isScrollable && isLastVisible && (
+              <span
+                className="btn --circle --white --up"
+                onClick={() => scrollToRef(refContactFirst)}
+              >
+                <img alt="up" src={arrowUpIcon} />
+              </span>
+            )}
+          </span>
           <div className="main__ads">
             <span className="main__ad-text">ad</span>
           </div>

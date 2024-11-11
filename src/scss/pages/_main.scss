@@ -39,10 +39,25 @@
         width: 1rem;
       }
       .main__frame-options {
+        position: relative;
         margin-right: 0.25rem;
         cursor: pointer;
         img {
           height: 1.2rem;
+        }
+        .main__frame-menu {
+          position: absolute;
+          bottom: -2.2rem;
+          right: 0.3rem;
+          width: 10rem;
+          display: flex;
+          flex-direction: column;
+          background-color: $frame-color;
+          .main__frame-menu-opt {
+            padding: 0.5rem 1rem;
+            text-align: center;
+            background-color: $frame-color;
+          }
         }
       }
     }
@@ -169,7 +184,8 @@
         }
       }
       .main__contacts {
-        height: 60%;
+        position: relative;
+        height: 60vh;
         display: flex;
         flex-direction: column;
         padding: 0.25rem 0.5rem;
@@ -215,10 +231,24 @@
           }
         }
       }
+      .main__scroll {
+        position: relative;
+        .btn {
+          position: absolute;
+          top: -5rem;
+          right: 3rem;
+          width: 4rem;
+          height: 4rem;
+          img {
+            width: 2.5rem;
+          }
+        }
+      }
       .main__ads {
         position: relative;
+        height: 20vh;
         display: flex;
-        flex: 1 1 auto;
+        //flex: 1 1 auto;
         align-items: center;
         justify-content: center;
         margin: 0 0.5rem 0.5rem 0.5rem;
