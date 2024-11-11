@@ -1,9 +1,9 @@
 import React from "react";
 import UserIcon from "./UserIcon";
 
-const Contact = ({ contact, contactKey }) => {
+const Contact = ({ contact, contactKey, onSelect }) => {
   return (
-    <div className="main__contact" key={contactKey}>
+    <div className="main__contact" key={contactKey} onClick={onSelect}>
       <div className="main__contact-stat">
         <UserIcon type={contact.status} />
         {contact.status !== "online" && <span>({contact.status})</span>}

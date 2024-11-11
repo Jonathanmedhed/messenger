@@ -2682,6 +2682,7 @@ Images
   flex-direction: row;
   align-items: center;
   margin-top: 0.5rem;
+  cursor: pointer;
 }
 .main__contact .main__contact-info {
   display: flex;
@@ -2901,11 +2902,12 @@ Images
 .main__frame .main__content .main__head .main__head-body .prof-img {
   width: 5rem;
   height: 5rem;
+  display: flex;
   margin-right: 1rem;
-  border-radius: 0.5rem;
   overflow: hidden;
 }
 .main__frame .main__content .main__head .main__head-body .prof-img img {
+  border-radius: 0.5rem;
   -o-object-fit: cover;
      object-fit: cover;
 }

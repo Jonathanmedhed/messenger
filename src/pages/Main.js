@@ -3,9 +3,11 @@ import Contact from "../components/Contact";
 import Input from "../components/Input";
 import Overlay from "../components/Overlay";
 import UserIcon from "../components/UserIcon";
-import { contactListExample } from "../utils/constants";
+// Functions
+import { createUsers } from "../utils/functions";
 import { validateEmail } from "../utils/regex";
 import { scrollToRef, useOnScreen } from "../utils/scrolling";
+// Icons
 import arrowDownIcon from "../images/arrow-down-circle.svg";
 import arrowUpIcon from "../images/arrow-up-circle.svg";
 import dogImg from "../images/dog.jpg";
@@ -14,19 +16,75 @@ import editIcon from "../images/edit.svg";
 import upIcon from "../images/up.svg";
 import FrameMsn from "../components/FrameMsn";
 import Dropdown from "../components/Dropdown";
+// Imgs For Contacts
+import personImg1 from "../images/person1.jpg";
+import personImg2 from "../images/person2.jpg";
+import personImg3 from "../images/person3.jpg";
+import personImg4 from "../images/person4.jpg";
+import personImg5 from "../images/person5.jpg";
+import landscapeImg1 from "../images/landscape1.jpg";
+import landscapeImg2 from "../images/landscape2.jpg";
+import landscapeImg3 from "../images/landscape3.jpg";
+import landscapeImg4 from "../images/landscape4.jpg";
+import landscapeImg5 from "../images/landscape5.jpg";
+import partyImg1 from "../images/party1.jpg";
+import partyImg2 from "../images/party2.jpg";
+import partyImg3 from "../images/party3.jpg";
+import partyImg4 from "../images/party4.jpg";
+import partyImg5 from "../images/party5.jpg";
+
+const pics = [
+  personImg1,
+  personImg2,
+  personImg3,
+  personImg4,
+  personImg5,
+  landscapeImg1,
+  landscapeImg2,
+  landscapeImg3,
+  landscapeImg4,
+  landscapeImg5,
+  partyImg1,
+  partyImg2,
+  partyImg3,
+  partyImg4,
+  partyImg5,
+];
+
+const user = {
+  email: `MarkJones@gmail.com`,
+  img: personImg1,
+  msg: "Having a nice day!",
+  name: "Mark Jones",
+  status: "online",
+};
 
 const Main = () => {
+  const createdUsers = createUsers(pics);
+
   //const [isHeadSm, setIsHeadSm] = useState(false);
-  const [contacts, setContacts] = useState(contactListExample);
-  const [displayMsg, setDisplayMsg] = useState("");
+  const [chats, setChats] = useState([
+    {
+      contact: createdUsers[1],
+      chat: [
+        {
+          text: "Hello, how you been? :)",
+          contact: createdUsers[1].name,
+        },
+      ],
+    },
+  ]);
+  const [activeChat, setActiveChat] = useState([]);
+  const [contacts, setContacts] = useState(createdUsers);
+  const [displayMsg, setDisplayMsg] = useState(user.msg);
   const [email, setEmail] = useState("");
-  const [displayName, setDisplayName] = useState("Display Name");
+  const [displayName, setDisplayName] = useState(user.name);
   const [showInvite, setShowInvite] = useState(false);
   const [showEditMsg, setShowEditMsg] = useState(false);
   const [showEditName, setShowEditName] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showStatOptions, setShowStatOptions] = useState(false);
-  const [status, setStatus] = useState("Offline");
+  const [status, setStatus] = useState(user.status);
   const [isScrollable, setIsScrollable] = useState(false);
 
   // to show scrollable
@@ -70,12 +128,6 @@ const Main = () => {
     if (contactsRefHeight > contactsContHeight) {
       setIsScrollable(true);
     }
-    console.log(
-      "contactsRefHeight: " +
-        contactsRefHeight +
-        " contactsContHeight: " +
-        contactsContHeight
-    );
   }, [refContacts, refContactFirst, contacts]);
 
   return (
@@ -120,7 +172,7 @@ const Main = () => {
           <div className="main__head">
             <div className="main__head-body">
               <div className="prof-img">
-                <img alt="icon" className="" src={dogImg} />
+                <img alt="icon" className="" src={user.img} />
               </div>
               <div className="main__head-info">
                 <div className="main__head-name">

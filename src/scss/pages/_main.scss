@@ -47,10 +47,11 @@
           .prof-img {
             width: 5rem;
             height: 5rem;
+            display: flex;
             margin-right: 1rem;
-            border-radius: 0.5rem;
             overflow: hidden;
             img {
+              border-radius: 0.5rem;
               object-fit: cover;
             }
           }
