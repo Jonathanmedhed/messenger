@@ -8,7 +8,7 @@ export const useOnScreen = (ref) => {
       new IntersectionObserver(([entry]) =>
         setIntersecting(entry.isIntersecting)
       ),
-    [ref]
+    []
   );
 
   useEffect(() => {

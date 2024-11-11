@@ -1,0 +1,36 @@
+.main__contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0.5rem;
+  .main__contact-info {
+    display: flex;
+    flex-direction: row;
+  }
+  .main__contact-stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0.1rem;
+    span {
+      margin-left: 0.1rem;
+      margin-right: 0.1rem;
+      color: $gray-dark-color;
+    }
+  }
+  .main__contact-name {
+    font-weight: bold;
+    margin-right: 0.5rem;
+    /**
+      margin-right: 0.5rem;
+      max-width: 50%;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      */
+  }
+}
