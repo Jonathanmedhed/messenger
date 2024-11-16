@@ -1,0 +1,25 @@
+.upload {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .upload__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    cursor: pointer;
+  }
+}

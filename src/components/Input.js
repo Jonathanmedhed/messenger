@@ -18,7 +18,10 @@ const Input = ({
           value={value}
           onChange={onChange}
           cleanOnEnter={cleanOnEnter}
-          onEnter={onEnter}
+          onEnter={() => {
+            onEnter();
+            console.log(value);
+          }}
           placeholder={placeholder}
         />
       ) : (

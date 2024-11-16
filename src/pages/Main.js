@@ -32,6 +32,7 @@ import partyImg2 from "../images/party2.jpg";
 import partyImg3 from "../images/party3.jpg";
 import partyImg4 from "../images/party4.jpg";
 import partyImg5 from "../images/party5.jpg";
+import UploadImg from "../components/UploadImg";
 
 const pics = [
   personImg1,
@@ -53,7 +54,7 @@ const pics = [
 
 const user = {
   email: `MarkJones@gmail.com`,
-  img: personImg1,
+  img: personImg2,
   msg: "Having a nice day!",
   name: "Mark Jones",
   status: "online",
@@ -74,11 +75,12 @@ const Main = () => {
       ],
     },
   ]);
-  const [activeChat, setActiveChat] = useState([]);
+  //const [activeChat, setActiveChat] = useState([]);
   const [contacts, setContacts] = useState(createdUsers);
   const [displayMsg, setDisplayMsg] = useState(user.msg);
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState(user.name);
+  const [profileImg, setProfileImg] = useState(user.img || dogImg);
   const [showInvite, setShowInvite] = useState(false);
   const [showEditMsg, setShowEditMsg] = useState(false);
   const [showEditName, setShowEditName] = useState(false);
@@ -103,6 +105,7 @@ const Main = () => {
   };
 
   const handleEditMsg = () => {
+    console.log("msg: " + displayMsg);
     setShowEditMsg(false);
   };
 
@@ -172,7 +175,9 @@ const Main = () => {
           <div className="main__head">
             <div className="main__head-body">
               <div className="prof-img">
-                <img alt="icon" className="" src={user.img} />
+                <UploadImg setImg={setProfileImg}>
+                  <img alt="icon" className="" src={profileImg} />
+                </UploadImg>
               </div>
               <div className="main__head-info">
                 <div className="main__head-name">
@@ -231,7 +236,10 @@ const Main = () => {
                     <>
                       <span
                         className="main__msg"
-                        onClick={() => setShowEditMsg(!showEditMsg)}
+                        onClick={() => {
+                          setShowEditMsg(!showEditMsg);
+                          console.log(displayMsg);
+                        }}
                       >
                         {displayMsg || "<Enter a personal message>"}
                       </span>

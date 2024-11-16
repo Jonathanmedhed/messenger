@@ -2776,6 +2776,11 @@ Images
   text-align: center;
 }
 
+/**
+.input__picker {
+  border: solid 2px red;
+}
+*/
 .overlay {
   position: fixed;
   top: 0;
@@ -2814,6 +2819,32 @@ Images
     padding: 1rem;
   }
 }
+.upload {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.upload input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1000;
+  opacity: 0;
+  cursor: pointer;
+}
+.upload .upload__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  cursor: pointer;
+}
+
 .user-icon.--default {
   width: 1.5rem;
 }
@@ -2839,7 +2870,6 @@ Images
 }
 .user-icon.--default .user-icon__add .user-icon__default.--inactive {
   width: 1.8rem;
-  border: solid 1px red;
 }
 .user-icon.--default .user-icon__add .user-icon__plus {
   position: absolute;
@@ -2905,6 +2935,7 @@ Images
   display: flex;
   margin-right: 1rem;
   overflow: hidden;
+  border-radius: 0.5rem;
 }
 .main__frame .main__content .main__head .main__head-body .prof-img img {
   border-radius: 0.5rem;
