@@ -1,5 +1,6 @@
 import "./scss/App.css";
 import Main from "./pages/Main";
+// after clone
 
 function App() {
   return (
