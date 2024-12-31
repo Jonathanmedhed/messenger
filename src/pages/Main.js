@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+// Components
+import Chat from "../components/Chat";
 import Contact from "../components/Contact";
 import Input from "../components/Input";
 import Overlay from "../components/Overlay";
@@ -15,7 +17,6 @@ import downIcon from "../images/down.svg";
 import editIcon from "../images/edit.svg";
 import upIcon from "../images/up.svg";
 import FrameMsn from "../components/FrameMsn";
-import Dropdown from "../components/Dropdown";
 // Imgs For Contacts
 import personImg1 from "../images/person1.jpg";
 import personImg2 from "../images/person2.jpg";
@@ -75,6 +76,19 @@ const Main = () => {
       ],
     },
   ]);
+
+  createdUsers[0].msgs = [
+    {
+      user: createdUsers[0],
+      msg: "Hello! :)",
+      time: "1:00",
+    },
+    {
+      user: user,
+      msg: "Hey! How are you? :)",
+      time: "2:00",
+    },
+  ];
   //const [activeChat, setActiveChat] = useState([]);
   const [contacts, setContacts] = useState(createdUsers);
   const [displayMsg, setDisplayMsg] = useState(user.msg);
@@ -135,6 +149,7 @@ const Main = () => {
 
   return (
     <div className="main">
+      {/** Invite user overlay */}
       <Overlay
         hide={() => {
           setShowInvite(false);
@@ -158,18 +173,20 @@ const Main = () => {
           </button>
         </div>
       </Overlay>
-      <FrameMsn>
-        {/** frame header */}
-        <div className="main__frame-inner">
-          <div className="main__frame-title">
-            <UserIcon type="two" /> <h1>MSN Messenger</h1>
-          </div>
-          <Dropdown
-            options={[{ label: "Logout", action: () => console.log("Logout") }]}
-            show={showMenu}
-            setShow={setShowMenu}
-          />
-        </div>
+      {/** Chat overlay */}
+      <Overlay
+        hide={() => {
+          setShowInvite(false);
+        }}
+        show={true}
+      >
+        <Chat me={user} user={contacts?.[0]} isActive={true} />
+      </Overlay>
+      <FrameMsn
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+        title="MSN Messenger"
+      >
         {/** content inside frame */}
         <div className="main__content">
           <div className="main__head">

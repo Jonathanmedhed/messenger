@@ -683,28 +683,28 @@
 *****************************************************************************************************/
 
 /** Hide or Show Elements */
-.hide {
-  display: none;
+.--hide {
+  display: none !important;
 }
 
-.hide-sm {
+.--hide-sm {
   display: unset;
 }
 
-.show-sm {
-  display: none;
+.--show-sm {
+  display: none !important;
 }
 
-.show-landscape {
-  display: none;
+.--show-landscape {
+  display: none !important;
 }
-.hide-landscape {
+.--hide-landscape {
   display: inline;
 }
-.show-portrait {
-  display: none;
+.--show-portrait {
+  display: none !important;
 }
-.hide-portrait {
+.--hide-portrait {
   display: inline;
 }
 

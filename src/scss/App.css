@@ -2433,31 +2433,31 @@
 * Display
 *****************************************************************************************************/
 /** Hide or Show Elements */
-.hide {
-  display: none;
+.--hide {
+  display: none !important;
 }
 
-.hide-sm {
+.--hide-sm {
   display: unset;
 }
 
-.show-sm {
-  display: none;
+.--show-sm {
+  display: none !important;
 }
 
-.show-landscape {
-  display: none;
+.--show-landscape {
+  display: none !important;
 }
 
-.hide-landscape {
+.--hide-landscape {
   display: inline;
 }
 
-.show-portrait {
-  display: none;
+.--show-portrait {
+  display: none !important;
 }
 
-.hide-portrait {
+.--hide-portrait {
   display: inline;
 }
 
@@ -2675,6 +2675,54 @@ Images
 
 .--capitalize {
   text-transform: capitalize;
+}
+
+.chat__cont {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.chat__top {
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+}
+.chat__bottom {
+  height: 20%;
+}
+.chat__top, .chat__bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.chat__top img, .chat__bottom img {
+  min-width: 10rem;
+  min-height: 10rem;
+  max-width: 10rem;
+  max-height: 10rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.chat__form {
+  flex-grow: 1;
+  height: 100%;
+  border: solid 2px red;
+  padding: 1rem;
+}
+.chat__form .react-emoji {
+  width: 100%;
+  height: 100%;
+}
+.chat__form .react-emoji .react-input-emoji--input {
+  width: 100%;
+  max-height: unset;
+  min-height: 10rem;
+}
+.chat__form .react-emoji .react-input-emoji--placeholder {
+  position: absolute;
+  bottom: unset;
 }
 
 .main__contact {

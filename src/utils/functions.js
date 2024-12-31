@@ -45,6 +45,7 @@ export const createUsers = (pics) => {
       msg: text.substring(0, getRandom(1, 150)),
       name: name,
       status: statusList[Math.floor(getRandom(1, statusList.length)) - 1],
+      msgs: [],
     });
   }
   //add friends
