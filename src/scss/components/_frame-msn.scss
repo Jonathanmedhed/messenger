@@ -9,12 +9,12 @@
   color: $white-color;
   font-size: 1rem;
   line-height: 1rem;
-  font-weight: bold;
   .main__frame-title {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 0.2rem;
+    max-width: 90%;
     img {
       width: 1.5rem;
     }
@@ -22,7 +22,21 @@
   h1 {
     font-size: 1rem;
     line-height: 1rem;
-    margin-left: 0.5rem;
+    margin: 0 0.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    &:hover,
+    &:focus,
+    &:active {
+      overflow: visible;
+      white-space: normal;
+      background-color: $frame-color;
+    }
   }
   img {
     width: 1rem;

@@ -7,7 +7,7 @@ const Chat = ({ me, user, isActive }) => {
   const [message, setMessage] = useState("");
   return (
     <div className={`chat ${!isActive ? "--hide" : ""}`}>
-      <FrameMsn title={user.name}>
+      <FrameMsn title={user.name} msg={user.msg} status={user.status}>
         <div className="chat__cont">
           <div className="chat__top">
             <div className="chat__msgs">
@@ -16,16 +16,14 @@ const Chat = ({ me, user, isActive }) => {
                   <div className="chat__msg-user">
                     {me.name === msg.user.name ? "Me" : msg.user.name}:
                   </div>
-                  <div className="chat__msg-inner">{msg.msg}</div>
-                  <div className="chat__msg-inner">{msg.time}</div>
+                  <div className="chat__msg-text">{msg.msg}</div>
+                  <div className="chat__msg-time">{msg.time} ago</div>
                 </div>
               ))}
             </div>
-            <img
-              alt="contact-img"
-              className="chat__img-top"
-              src={me.img || greenIcon}
-            />
+            <div className="chat__img">
+              <img alt="contact-img" src={me.img || greenIcon} />
+            </div>
           </div>
           <div className="chat__bottom">
             <div className="chat__form">
@@ -36,11 +34,9 @@ const Chat = ({ me, user, isActive }) => {
                 type={"emoji"}
               />
             </div>
-            <img
-              alt="contact-img"
-              className="chat__img-top"
-              src={user.img || greenIcon}
-            />
+            <div className="chat__img">
+              <img alt="contact-img" src={user.img || greenIcon} />
+            </div>
           </div>
         </div>
       </FrameMsn>

@@ -76,7 +76,8 @@ const Main = () => {
       ],
     },
   ]);
-
+  createdUsers[0].msg =
+    "Hello! :)   kkkkkkkkkkiolhiugh          iogniungoiuoig          iogniygyugougugfnui6fyirndiyntf6ngghiung   nuyfui6figuigf lihiuhiygiyngyunguyngnyugmuykagkuygymagmuuioigogoighhhasdkjlghaklju hasidhfalkuhsiluhydfsduhfsuihfsuidhfuisdhfiusdhfuishfspfdh sdihfiusdhgfisuhgsughsdghsdguhsdguhsda;ughsdguhsdlikgjbhdaslguhsdlgubhadsklgbasdkljadsnh uhsdihgfsdiughsduh sduhg dsuhgls dahgl shdliguhsusdhgsduhglsduh iusdfdfghsduhg iusdhgopsduhgi";
   createdUsers[0].msgs = [
     {
       user: createdUsers[0],
