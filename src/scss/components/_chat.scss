@@ -42,23 +42,53 @@
     flex-grow: 1;
   }
   &__msg {
+    width: 20rem;
+    max-width: 30rem;
     display: flex;
     flex-direction: column;
     margin-bottom: 0.5rem;
-  }
-  &__msg-user {
-    font-weight: bold;
-    margin-bottom: 0.2rem;
-  }
-  &__msg-text {
-    padding-left: 0.5rem;
-    margin-bottom: 0.1rem;
+    border-radius: 0.5rem;
+    line-height: 1.4rem;
+    &__msg-user {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+      padding: 0.25rem 0.5rem;
+    }
+    .chat__msg-user {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 0.7rem;
+      line-height: 0.9rem;
+      padding: 0.25rem 0.5rem;
+      background-color: $blue-color;
+      color: $white-color;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .chat__msg-text {
+      padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+      margin-bottom: 0.1rem;
+      background-color: $blue-light-color;
+      color: $white-color;
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+
+    &.--me {
+      margin-left: 10%;
+      .chat__msg-user {
+        background-color: $purple-color;
+      }
+      .chat__msg-text {
+        background-color: $purple-light-color;
+      }
+    }
   }
   &__msg-time {
-    padding-left: 0.5rem;
     font-size: 0.6rem;
     line-height: 0.7rem;
-    color: $gray-dark-color;
+    color: $white-color;
   }
 
   &__form {

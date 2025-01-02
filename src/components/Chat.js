@@ -5,19 +5,27 @@ import greenIcon from "../images/user-green.webp";
 
 const Chat = ({ me, user, isActive }) => {
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState(user.msgs || []);
+
+  const isUserMsg = (msg) => {
+    return me.name === msg.user.name;
+  };
   return (
     <div className={`chat ${!isActive ? "--hide" : ""}`}>
       <FrameMsn title={user.name} msg={user.msg} status={user.status}>
         <div className="chat__cont">
           <div className="chat__top">
             <div className="chat__msgs">
-              {user?.msgs.map((msg, i) => (
-                <div className="chat__msg" index={i}>
+              {messages.map((msg, i) => (
+                <div
+                  className={`chat__msg ${isUserMsg(msg) ? "--me" : ""}`}
+                  index={i}
+                >
                   <div className="chat__msg-user">
-                    {me.name === msg.user.name ? "Me" : msg.user.name}:
+                    {isUserMsg(msg) ? "You" : msg.user.name}:
+                    <span className="chat__msg-time">{msg.time} ago</span>
                   </div>
                   <div className="chat__msg-text">{msg.msg}</div>
-                  <div className="chat__msg-time">{msg.time} ago</div>
                 </div>
               ))}
             </div>

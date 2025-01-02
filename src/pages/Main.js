@@ -86,7 +86,7 @@ const Main = () => {
     },
     {
       user: user,
-      msg: "Hey! How are you? :)",
+      msg: "Hey! How are you? :)  Hey! How are you? :) Hey! How are you? :) Hey! How are you? :) Hey! How are you? :)",
       time: "2:00",
     },
   ];
