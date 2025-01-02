@@ -7,8 +7,8 @@ const Dropdown = ({ options }) => {
     <div className="dropdown">
       <img alt="menu" onClick={() => setShow(!show)} src={menuIcon} />
       <div className={`dropdown-list ${show ? "" : "--hide"}`}>
-        {options.map((option) => (
-          <div className="dropdown-list-opt" onClick={option.action}>
+        {options.map((option, i) => (
+          <div className="dropdown-list-opt" key={i} onClick={option.action}>
             {option.label}
           </div>
         ))}

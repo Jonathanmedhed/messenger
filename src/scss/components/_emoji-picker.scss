@@ -1,0 +1,31 @@
+.emoji-picker {
+  background-color: $white-color;
+  border: solid 2px $white-dark-color;
+  padding: 0.7rem 0.25rem 0.7rem 0.3rem;
+  border-radius: 0.5rem;
+  .emoji-picker__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .emoji-picker__category {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .emoji-picker__emoji {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    margin: 0.05rem;
+    text-align: center;
+    cursor: pointer;
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 0.6;
+    }
+  }
+}

@@ -1,3 +1,10 @@
+.input {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border: solid 2px black;
+}
 .input__error {
   width: 100%;
   color: $danger-color;
@@ -5,8 +12,24 @@
   text-align: center;
 }
 
-/**
-.input__picker {
-  border: solid 2px red;
+.input__emoji-picker {
+  position: relative;
 }
-*/
+.input__emojies {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin-bottom: 0.25rem;
+  background-color: $white-color;
+  &.--show {
+    opacity: 1;
+    width: 20rem;
+    height: 30rem;
+    overflow-y: auto;
+  }
+}

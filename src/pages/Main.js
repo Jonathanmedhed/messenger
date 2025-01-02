@@ -82,12 +82,12 @@ const Main = () => {
     {
       user: createdUsers[0],
       msg: "Hello! :)",
-      time: "1:00",
+      time: new Date(),
     },
     {
       user: user,
       msg: "Hey! How are you? :)  Hey! How are you? :) Hey! How are you? :) Hey! How are you? :) Hey! How are you? :)",
-      time: "2:00",
+      time: new Date(),
     },
   ];
   //const [activeChat, setActiveChat] = useState([]);
